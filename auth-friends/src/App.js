@@ -1,12 +1,22 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import PrivateRoute from './components/utility/PrivateRoute';
+import GetFriends from './components/friends/GetFriends';
+import Login from './components/Login/Login';
 
 function App() {
   return (
-    <div className='App'>
-      <header className='App-header' />
-    </div>
+    <Router>
+      <div className='App'>
+        <header className='App-header'>
+          <Switch>
+            <Route exact path='/' component={Login} />
+            <PrivateRoute exact path='/friends' component={GetFriends} />
+          </Switch>
+        </header>
+      </div>
+    </Router>
   );
 }
 
